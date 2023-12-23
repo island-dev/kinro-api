@@ -46,7 +46,7 @@ export class AppController {
       const infoJSON = {
         "time": timeText,
         "title": pText,
-        "imgURL": imgSrc,
+        "imgUrl": imgSrc,
       }
       // Return time and imgSrc
       return JSON.stringify(infoJSON);
