@@ -1,0 +1,57 @@
+{
+  "plugins": [
+    "sort-keys-custom-order",
+    "simple-import-sort",
+    "import",
+    "unused-imports",
+    "tailwindcss"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:tailwindcss/recommended"
+  ],
+  "rules": {
+    "sort-keys-custom-order/object-keys": [
+      "error",
+      {
+        "orderedKeys": ["id", "name", "title"]
+      }
+    ],
+    "sort-keys-custom-order/type-keys": [
+      "error",
+      {
+        "orderedKeys": ["id", "name", "title"]
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "no-var": "error",
+    "semi": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "no-multiple-empty-lines": "error",
+    "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_"
+      }
+    ],
+    "no-multi-spaces": 2,
+    "no-trailing-spaces": "error",
+    "no-irregular-whitespace": "error"
+  },
+  "settings": {
+    "tailwindcss": {
+      "groupByResponsive": true,
+      "whitelist": []
+    }
+  }
+}
