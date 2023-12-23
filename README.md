@@ -2,7 +2,7 @@
 
 金曜ロードショーの詳細を取得できるAPI
 
-### 使い方
+## 使い方 / Usage
 
 https://kinro-api.vercel.app/kinro
 
