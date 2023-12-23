@@ -53,10 +53,10 @@ export class AppController {
       const imgSrc = imgMatch[1];
 
       const infoJSON = {
-        time: timeText,
-        title: pText,
-        imgURL: imgSrc,
-      };
+        "time": timeText,
+        "title": pText,
+        "imgUrl": imgSrc,
+      }
       // Return time and imgSrc
       return JSON.stringify(infoJSON);
     } catch (error) {
