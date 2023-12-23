@@ -27,6 +27,13 @@ export class AppController {
         throw new Error('No time tag found');
       }
       const timeText = timeMatch[1];
+
+      const pRegex = /<p[^>]*>(.*?)<\/p>/gs;
+      const pMatch = pRegex.exec(html);
+      if (!pMatch) {
+        throw new Error('No time tag found');
+      }
+      const pText = pMatch[1];
      
       // Extract img tags
       const imgRegex = /<img[^>]*src="(.*?)"[^>]*>/gs;
@@ -38,6 +45,7 @@ export class AppController {
       
       const infoJSON = {
         "time": timeText,
+        "title": pText,
         "imgURL": imgSrc,
       }
       // Return time and imgSrc
