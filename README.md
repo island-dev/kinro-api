@@ -12,6 +12,10 @@ nestJSでなにか適当なAPIを作ってやろうと思って作っただけ�
 使っていただけると嬉しいです
 
 ### curl
-$ curl -X GET https://kinro-api.vercel.app/kinro
+```$ curl -X GET https://kinro-api.vercel.app/kinro```
+
+v2.0 - レスポンスにtitleを追加。
+
+v1.0 - 初期バージョン
 
 **Powerd By island_dev**
