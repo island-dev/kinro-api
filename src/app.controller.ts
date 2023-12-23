@@ -1,6 +1,5 @@
-import { Controller, Get, Head, Header, HttpCode, Param, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, Get, Header, HttpCode } from '@nestjs/common';
 import { AppService } from './app.service';
-import { info } from 'console';
 
 @Controller()
 export class AppController {
@@ -13,13 +12,13 @@ export class AppController {
 
   @Get('kinro')
   @HttpCode(201)
-  @Header("Content-Type", "application/json")
+  @Header('Content-Type', 'application/json')
   async getkinro(): Promise<string> {
     try {
       // Fetch HTML
       const response = await fetch('https://kinro.ntv.co.jp/');
       const html = await response.text();
-     
+
       // Extract time tags
       const timeRegex = /<time[^>]*>(.*?)<\/time>/gs;
       const timeMatch = timeRegex.exec(html);
@@ -28,13 +27,14 @@ export class AppController {
       }
       const timeText = timeMatch[1];
 
-      const pRegex = /<p[^>]*>(.*?)<\/p>/gs;
-      const pMatch = pRegex.exec(html);
-      if (!pMatch) {
-        throw new Error('No time tag found');
+      // Extract paragraph tags
+      const titleRegex = /<p[^>]*>(.*?)<\/p>/gs;
+      const titleMatch = titleRegex.exec(html);
+      if (!titleMatch) {
+        throw new Error('No paragraph tag found');
       }
-      const pText = pMatch[1];
-     
+      const titleText = titleMatch[1];
+
       // Extract img tags
       const imgRegex = /<img[^>]*src="(.*?)"[^>]*>/gs;
       const imgMatch = imgRegex.exec(html);
@@ -42,17 +42,17 @@ export class AppController {
         throw new Error('No img tag found');
       }
       const imgSrc = imgMatch[1];
-      
+
       const infoJSON = {
-        "time": timeText,
-        "title": pText,
-        "imgUrl": imgSrc,
-      }
+        broadcastStartTime: timeText,
+        title: titleText,
+        imageUrl: imgSrc,
+      };
       // Return time and imgSrc
       return JSON.stringify(infoJSON);
-      } catch (error) {
+    } catch (error) {
       console.error('Error:', error);
       throw error;
-      }
+    }
   }
 }
