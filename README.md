@@ -1,7 +1,6 @@
 # KINRO API - 金曜ロードショーの詳細を取得できるAPI v2.0
 
-## Usage
-使い方
+## 使い方 / Usage
 
 https://kinro-api.vercel.app/kinro
 にGETリクエストを送ると、json形式でtime, imgURLの値がレスポンスとしてjson形式で帰ってきます
