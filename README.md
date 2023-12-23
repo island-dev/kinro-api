@@ -1,4 +1,4 @@
-# KINRO - API 金曜ロードショーの詳細を取得できるAPI v1.0
+# KINRO API - 金曜ロードショーの詳細を取得できるAPI v2.0
 
 ## Usage
 使い方
