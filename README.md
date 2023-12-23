@@ -10,6 +10,8 @@ timeは放送予定日, titleは映画のタイトル, imgURLは放送タイト�
 ### レスポンス例
 ```{"time":"1月5日よる9時放送","title":"千と千尋の神隠し","imgUrl":"https://dtg3yjoeemd2c.cloudfront.net/cms/lineup/94262c2dd76bfdbd452b6c13b1dabc6cb6399137.jpg"}```
 
+### なぜ作ったのか
+
 nestJSでなにか適当なAPIを作ってやろうと思って作っただけなので需要はないと思います(笑)
 
 使っていただけると嬉しいです
