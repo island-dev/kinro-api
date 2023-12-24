@@ -30,7 +30,7 @@ NestJSでなにか適当なAPIを作ってやろうと思って作っただけ�
 #### curl
 
 ```bash
-$ curl -X GET https://kinro-api.vercel.app/kinro
+curl -X GET https://kinro-api.vercel.app/kinro
 ```
 
 ### バージョン履歴
