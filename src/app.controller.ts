@@ -3,56 +3,44 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+ constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+ @Get()
+ getHello(): string {
+   return this.appService.getHello();
+ }
 
-  @Get('kinro')
-  @HttpCode(201)
-  @Header('Content-Type', 'application/json')
-  async getkinro(): Promise<string> {
-    try {
-      // Fetch HTML
-      const response = await fetch('https://kinro.ntv.co.jp/');
-      const html = await response.text();
+ @Get('kinro')
+ @HttpCode(201)
+ @Header('Content-Type', 'application/json')
+ async getkinro(): Promise<string> {
+   try {
+     const response = await fetch('https://kinro.ntv.co.jp/');
+     const html = await response.text();
 
-      // Extract time tags
-      const timeRegex = /<time[^>]*>(.*?)<\/time>/gs;
-      const timeMatch = timeRegex.exec(html);
-      if (!timeMatch) {
-        throw new Error('No time tag found');
-      }
-      const timeText = timeMatch[1];
+     const regex = /<time[^>]*>(.*?)<\/time>|<p[^>]*>(.*?)<\/p>|<img[^>]*src="(.*?)"[^>]*>|<mark[^>]*>(.*?)<\/mark>/gs;
+     const matches = Array.from(html.matchAll(regex));
 
-      // Extract paragraph tags
-      const titleRegex = /<p[^>]*>(.*?)<\/p>/gs;
-      const titleMatch = titleRegex.exec(html);
-      if (!titleMatch) {
-        throw new Error('No paragraph tag found');
-      }
-      const titleText = titleMatch[1];
+     const timeText = matches.find(match => match[1])?.[1];
+     const titleText = matches.find(match => match[2])?.[2];
+     const imgSrc = matches.find(match => match[3])?.[3];
+     const MitaiSrc = matches.find(match => match[4])?.[4];
 
-      // Extract img tags
-      const imgRegex = /<img[^>]*src="(.*?)"[^>]*>/gs;
-      const imgMatch = imgRegex.exec(html);
-      if (!imgMatch) {
-        throw new Error('No img tag found');
-      }
-      const imgSrc = imgMatch[1];
+     if (!timeText || !titleText || !imgSrc || !MitaiSrc) {
+       throw new Error('要素が見つかりませんでした');
+     }
 
-      const infoJSON = {
-        broadcastStartTime: timeText,
-        title: titleText,
-        imageUrl: imgSrc,
-      };
-      // Return time and imgSrc
-      return JSON.stringify(infoJSON);
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  }
+     const infoJSON = {
+       broadcastStartTime: timeText,
+       title: titleText,
+       imageUrl: imgSrc,
+       Mitai: MitaiSrc,
+     };
+
+     return JSON.stringify(infoJSON);
+   } catch (error) {
+     console.error('Error:', error);
+     throw error;
+   }
+ }
 }
