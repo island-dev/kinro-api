@@ -1,4 +1,4 @@
-## KINRO API - 金曜ロードショーのAPI v2.0
+## KINRO API - 金曜ロードショーのAPI v3.0
 
 金曜ロードショーの詳細を取得できるAPI
 
@@ -34,6 +34,8 @@ $ curl -X GET https://kinro-api.vercel.app/kinro
 ```
 
 ### バージョン履歴
+
+v3.0 - コードを大幅に短縮, Mitaiのレスポンスを追加
 
 v2.0 - レスポンスにtitleを追加。
 
