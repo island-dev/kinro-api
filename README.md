@@ -14,11 +14,12 @@ https://kinro-api.vercel.app/kinro
 {
   "broadcastStartTime": "1月5日よる9時放送",
   "title": "千と千尋の神隠し",
-  "imageUrl": "https://dtg3yjoeemd2c.cloudfront.net/cms/lineup/94262c2dd76bfdbd452b6c13b1dabc6cb6399137.jpg"
+  "imageUrl": "https://dtg3yjoeemd2c.cloudfront.net/cms/lineup/94262c2dd76bfdbd452b6c13b1dabc6cb6399137.jpg",
+  "Mitai":"21752"
 }
 ```
 
-`broadcastStartTime`は放送予定時刻、`title`は映画のタイトル, `imageUrl`は放送タイトルの画像です。
+`broadcastStartTime`は放送予定時刻、`title`は映画のタイトル, `imageUrl`は放送タイトルの画像, `Mitai`は見たい！の数です。
 
 ### なぜ作ったのか
 
