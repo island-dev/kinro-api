@@ -34,7 +34,7 @@ export class AppController {
        broadcastStartTime: timeText,
        title: titleText,
        imageUrl: imgSrc,
-       Mitai: MitaiSrc,
+       mitai: parseInt(MitaiSrc),
      };
 
      return JSON.stringify(infoJSON);
