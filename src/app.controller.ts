@@ -4,13 +4,8 @@ import { AppService } from './app.service';
 @Controller()
 export class AppController {
  constructor(private readonly appService: AppService) {}
-
+ 
  @Get()
- getHello(): string {
-   return this.appService.getHello();
- }
-
- @Get('kinro')
  @HttpCode(201)
  @Header('Content-Type', 'application/json')
  async getkinro(): Promise<string> {
