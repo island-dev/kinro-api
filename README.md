@@ -4,7 +4,7 @@
 
 ## 使い方 / Usage
 
-https://kinro-api.vercel.app/kinro
+https://kinro-api.vercel.app/
 
 上記のエンドポイントにGETリクエストを送ると、以下のようなデータがJSON形式で返されます。
 
@@ -30,7 +30,7 @@ NestJSでなにか適当なAPIを作ってやろうと思って作っただけ�
 #### curl
 
 ```bash
-curl -X GET https://kinro-api.vercel.app/kinro
+curl -X GET https://kinro-api.vercel.app/
 ```
 
 ### バージョン履歴
